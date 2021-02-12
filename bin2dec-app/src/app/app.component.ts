@@ -1,5 +1,4 @@
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 const TOOLTIP_MESSAGE = 'Click the result to copy the value to the clipboard';
@@ -9,9 +8,7 @@ const TOOLTIP_MESSAGE = 'Click the result to copy the value to the clipboard';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-
-  title = 'my-app';
+export class AppComponent {
 
   isValid: boolean = false;
   result: string = '';
@@ -21,11 +18,6 @@ export class AppComponent implements OnInit {
   binaryNumberInput = new FormControl('', {
     validators: [Validators.pattern('^[0-1]*$')]
   });
-
-  ngOnInit(): void {
-
-
-  }
 
   validate() {
 
@@ -38,11 +30,15 @@ export class AppComponent implements OnInit {
     if (this.binaryNumberInput.valid) {
 
       let value = (event.target as HTMLInputElement).value;
-      console.log(value);
-      this.result = value;
+
+      let decimalNumber = value.split('').reverse().reduce((previousValue, currentValue, index) => {
+        return (currentValue === '1') ? (previousValue + Math.pow(2, index)) : previousValue;
+      }, 0);
+
+      this.result = decimalNumber.toString();
     } else {
 
-      // remove result
+      this.result = '';
     }
   }
 
@@ -57,14 +53,9 @@ export class AppComponent implements OnInit {
 
     this.tooltipMessage = 'Copied!!';
     setTimeout(() => {
-    
+
       this.tooltipMessage = TOOLTIP_MESSAGE;
     }, 500);
-    
-  }
-
-  getDecimalNumber(binaryNumber: number) {
 
   }
-
 }
