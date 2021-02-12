@@ -7,25 +7,26 @@
 
     <mat-card class="inner-content">
 
-      <h2>Binary to Decimal Converter</h2>
+      <h1 class="noselect">Binary to Decimal Converter</h1>
 
       <mat-form-field appearance="outline">
 
         <mat-label>Binary number input</mat-label>
-        <input (keyup)="calculate($event)" matInput placeholder="Type here the binary number" (input)="validate()" [formControl]='binaryNumberInput'>
+        <input (keyup)="calculate($event)" matInput placeholder="Type here the binary number" (input)="validate()"
+          [formControl]='binaryNumberInput'>
         <mat-error>An invalid value was entered. Please, only 0 or 1 are allowed.</mat-error>
       </mat-form-field>
 
-      <div class="app-result-box">
-        <h2>Decimal result: {{result}}</h2>
+      <div *ngIf="result" class="app-result-box">
+        <h2 matTooltip="{{tooltipMessage}}" class="result noselect">Decimal result: <span (click)="copy()"
+            class="result-value">{{result}}</span></h2>
       </div>
-
     </mat-card>
 
   </main>
 
   <footer class="footer">
-    <h2>like and share</h2>
+
   </footer>
 
 </div>

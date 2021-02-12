@@ -1,6 +1,8 @@
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
+const TOOLTIP_MESSAGE = 'Click the result to copy the value to the clipboard';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,9 @@ export class AppComponent implements OnInit {
   title = 'my-app';
 
   isValid: boolean = false;
-  result: number = 0;
+  result: string = '';
+
+  tooltipMessage: string = TOOLTIP_MESSAGE;
 
   binaryNumberInput = new FormControl('', {
     validators: [Validators.pattern('^[0-1]*$')]
@@ -35,10 +39,32 @@ export class AppComponent implements OnInit {
 
       let value = (event.target as HTMLInputElement).value;
       console.log(value);
-    }else{
+      this.result = value;
+    } else {
 
       // remove result
     }
+  }
+
+  copy() {
+
+    let textAreaTempElement = document.createElement('textarea');
+    textAreaTempElement.value = this.result;
+    document.body.appendChild(textAreaTempElement);
+    textAreaTempElement.select();
+    document.execCommand('Copy');
+    textAreaTempElement.remove();
+
+    this.tooltipMessage = 'Copied!!';
+    setTimeout(() => {
+    
+      this.tooltipMessage = TOOLTIP_MESSAGE;
+    }, 500);
+    
+  }
+
+  getDecimalNumber(binaryNumber: number) {
+
   }
 
 }

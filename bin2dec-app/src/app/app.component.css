@@ -21,28 +21,74 @@
 .content {
   grid-area: content;
   height: 100%;
-  background-color: azure;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* flex-wrap: nowrap; */
-  /* display: flex;
-    position: relative; */
 }
 
 .footer {
   grid-area: footer;
-  background-color: antiquewhite;
   padding: 0 2rem;
 }
 
 .inner-content {
-  background-color:rgb(215, 215, 215);
-  
-  
-  /* display: flex; */
-  /* width: 100%;
-    display: flex;
-    align-items: center; */
+  background-color: #fff;
+  min-width: 335px;
+  max-width: 335px;
+  height: 210px;
+  margin: 5px;
+  text-justify: auto;
+}
 
+.inner-content mat-form-field {
+  width: 100%;
+}
+
+.inner-content h1 {
+  text-align: center;
+  color: #9c27b0;
+}
+
+.result {
+  color: #000000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.result-value {
+  color: #9c27b0;
+  font-weight: 400;
+  cursor: copy;
+}
+
+.result-value:hover {
+  font-weight: bold;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgb(0 0 0 / 50%);
+}
+
+:host ::ng-deep .mat-form-field-label {
+  color: rgb(0 0 0 / 50%);
+}
+
+:host ::ng-deep .mat-input-element {
+  color: rgb(0 0 0 / 50%);
+}
+
+:host ::ng-deep .mat-input-element::placeholder {
+  color: rgb(0 0 0 / 50%);
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
