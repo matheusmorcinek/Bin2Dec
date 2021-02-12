@@ -32,3 +32,11 @@ constraints:
 ## Bonus features
 
 - [x] ~User can enter a variable number of binary digits~
+
+
+===================================================================================================================================
+
+## How to run?
+
+npm install
+npm start
