@@ -2,7 +2,7 @@
 
 Idea from [here](https://github.com/florinpop17/app-ideas)
 
-**Demo**: //TODO
+**Demo**: [Codesandbox](https://pu5pr.codesandbox.io/) 
 
 **Tier:** 1-Beginner
 
